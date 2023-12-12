@@ -1,7 +1,6 @@
 const names = ["Alex", "Jim", "Aliyah", "Tasneem", "Maya", "Moss", "Rina", "Bethany", "Aidan", "Tyrone"];
 const prices = [40, 50, 60, 70, 80, 90];
 const occupations = ["designer", "marketer", "instructor", "mathmatician", "historian", "contractor", "librarian", "researcher", "animator", "developer", "writer", "teacher", "programmer"];
-// const maxListing = 12;
 
 const freelancers = [
   { name: "Alice", price: 30, occupation: "writer"},
@@ -11,8 +10,9 @@ const freelancers = [
 
 
 const addFrlIntervalId = setInterval(addListing, 2000); 
-
+let sum = 50;
 render();
+
 
 function render() {
     const listing = document.querySelector("#listing");
@@ -22,6 +22,18 @@ function render() {
         return element;
     })
     listing.replaceChildren(...listingElements,);
+
+    const averagePrice = document.querySelector("#average_price");
+    // const priceElement = document.createElement("div");
+     // add loop
+    for (let key in freelancers) {
+        sum += freelancers[key]["price"];
+    }
+
+    //console.log(sum);
+    let average = sum / freelancers.length;
+    averagePrice.textContent = "Average Price: " + average;
+    // averagePrice.appendChild(priceElement);
 };
 
 function addListing() {
@@ -38,9 +50,4 @@ function addListing() {
     };
 };
 
-//const averagePrice = document.querySelector("#average_price");
-//const priceElement = document.createElement("div");
-//let sum = 50;
-//sum += freelancers.price;
-//priceElement.textContent = "Average Price: " + sum;
-//averagePrice.appendChild(priceElement);
+
